@@ -46,13 +46,11 @@
     firebase.initializeApp(firebaseConfig);
     const messaging = firebase.messaging();
     function startFCM() {
-        // alert('hi');
         messaging
             .requestPermission()
             .then(function () {
                 return messaging.getToken()
             })
-
             .then(function (response) {
                 $.ajaxSetup({
                     headers: {
@@ -67,7 +65,6 @@
                     },
                     dataType: 'JSON',
                     success: function (response) {
-                        alert(response);
                         alert('Token stored.');
                     },
                     error: function (error) {
